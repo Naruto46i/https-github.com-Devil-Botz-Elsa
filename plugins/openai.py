@@ -5,7 +5,7 @@ import openai
 
 openai.api_key = OPENAI_API
 
-@Client.on_message(filters.command("openai"))
+@Client.on_message(filters.command("ask"))
 async def ask_question(client, message):
     try:
         text = message.text.split(" ", 1)[1]
