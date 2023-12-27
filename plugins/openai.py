@@ -18,7 +18,7 @@ async def ask_question(client, message):
             prompt=text,
             max_tokens=2000
         )
-        await msg.edit(f"User: {message.from_user.mention}\nQuery: <code>{text}</code>\n\nResults:\n\n<code>{response.choices[0].text}</code>")
+        await msg.edit(f"User: {message.from_user.mention}\nQuery: <code>{text}</code>\n\nResults:\n\n<code>{response.choices[0].text}</code> JOIN MOVIE GROUP 🎥 ✅ @MM_4KFLIXMT")
     except Exception as e:
         await msg.edit(f'Error - <code>{e}</code>')
    
