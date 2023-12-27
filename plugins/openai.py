@@ -10,8 +10,8 @@ async def ask_question(client, message):
     try:
         text = message.text.split(" ", 1)[1]
     except:
-        return await message.reply_text("Command Incomplete!\nUsage: /openai your_question")
-    msg = await message.reply("Searching...")
+        return await message.reply_text("GIVE ME INPUT ")
+    msg = await message.reply("🔍")
     try:
         response = openai.Completion.create(
             engine="text-davinci-003",
