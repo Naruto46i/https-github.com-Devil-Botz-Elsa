@@ -11,7 +11,6 @@ openai.api_key = OPENAI_API
 async def openai_answer(client, message):
     if AI == True:
         if message.chat.id != SUPPORT_CHAT_ID:
-        if user_id:
             try:
                 users_message = message.text.split(" ", 1)[1]
             except:
