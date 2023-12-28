@@ -37,3 +37,4 @@ python-math
 Pillow
 speedtest-cli
 openai
+pydub
