@@ -1,11 +1,11 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message
-import openai
+import ai
 from info import API_ID, API_HASH, BOT_TOKEN, OPENAI_API_KEY, PORT
 
-openai.api_key = OPENAI_API_KEY
+openai.api_key = OPENAI_API
 
-@Client.on_message(filters.command('openai'))
+@Client.on_message(filters.command('chatgpt'))
 async def openai_command(client, message):
     if not message.text:
         await client.send_message(message.chat.id, "Please provide ur request")
