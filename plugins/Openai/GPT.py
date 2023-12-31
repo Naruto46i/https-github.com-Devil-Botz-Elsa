@@ -10,12 +10,14 @@ openai.api_key = OPENAI_API
 @Client.on_message(filters.private & filters.command('openai'))
 async def openai_answer(client, message):
     if AI == True:
-        if message.chat.id != SUPPORT_CHAT_ID:
+        user_id = message.from_user.id
+        if user_id:
             try:
                 users_message = message.text.split(" ", 1)[1]
             except:
                 return await message.reply_text("use in this format-\n\n<code>/openai how to create a telegram bot</code> <br> Sorry openai quota completed")
             try:
+                user_id = message.from_user.id
                 response = openai.Completion.create(
                     model = "text-davinci-003",
                     prompt = users_message,
