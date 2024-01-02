@@ -1,10 +1,10 @@
 from info import SUPPORT_CHAT_ID, SUPPORT_LINK, OPENAI_API
 from pyrogram import Client, filters, enums
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-from plugins.ai import OpenAI
+import openai 
 
 
-openai=OpenAI(api_key = OPENAI_API)
+openai.api_key = OPENAI_API
 
 @Client.on_message(filters.command("openai"))
 async def ask_question(client, message):
