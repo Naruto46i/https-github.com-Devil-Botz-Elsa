@@ -14,10 +14,11 @@ async def openai_command(client, message):
     try:
         user_input = message.text.split(' ', 1)[1]
 
-        response = openai.Completion.create(
-            model="gpt-3.5-turbo-instruct",
-            prompt=user_input,
-            max_tokens=1024
+        response = ai_client.chat.completions.create(
+            messages=[
+                {"role": "user", "content": text}
+            ],
+            model="gpt-3.5-turbo"
         )
 
         await message.reply_text(response.choices[0].text)
