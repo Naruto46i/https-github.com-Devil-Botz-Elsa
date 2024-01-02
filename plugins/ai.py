@@ -1,10 +1,11 @@
 from info import SUPPORT_CHAT_ID, SUPPORT_LINK, OPENAI_API
 from pyrogram import Client, filters, enums
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-import openai 
-openai.api_key = OPENAI_API
+from plugins.ai import OpenAI
 
-@Client.on_message(filters.command("ask"))
+ai_client = OpenAI(api_key=OPENAI_API)
+
+@Client.on_message(filters.command("openai"))
 async def ask_question(client, message):
     if len(OPENAI_API) == 0:
         return await message.reply("OPENAI_API is empty")
