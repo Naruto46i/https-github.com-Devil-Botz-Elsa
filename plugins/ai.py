@@ -21,7 +21,7 @@ async def openai_command(client, message):
             model="gpt-3.5-turbo"
         )
 
-        await message.reply_text(response.choices[0].text)
+        await message.reply_text(response.choices[0].message.content)
 
     except Exception as e:
         error_message = f"Sorry, an error occurred: {str(e)}"
