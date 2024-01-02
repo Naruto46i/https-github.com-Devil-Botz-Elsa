@@ -36,5 +36,5 @@ aiohttp
 python-math
 Pillow
 speedtest-cli
-openai
+openai==0.27.0
 pytube
