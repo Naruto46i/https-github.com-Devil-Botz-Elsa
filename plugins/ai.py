@@ -1,10 +1,9 @@
 from info import SUPPORT_CHAT_ID, SUPPORT_LINK, OPENAI_API
 from pyrogram import Client, filters, enums
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-from plugins.ai import OpenAI
 import openai 
 
-ai_client = OpenAI(api_key=OPENAI_API)
+openai.api_key = OPENAI_API
 
 @Client.on_message(filters.command("openai"))
 async def ask_question(client, message):
@@ -21,7 +20,7 @@ async def ask_question(client, message):
         return await message.reply_text("Command Incomplete!\nUsage: /openai your_question")
     msg = await message.reply("Searching...")
     try:
-        response = ai_client.chat.completions.create(
+        response = openai.chat.completions.create(
             messages=[
                 {"role": "user", "content": text}
             ],
