@@ -5,11 +5,10 @@ from info import API_ID, API_HASH, BOT_TOKEN, OPENAI_API, PORT
 
 openai.api_key = OPENAI_API
 
-@Client.on_message(filters.command('chatgpt'))
-async def openai_command(client, message):
-    if not message.text:
-        await client.send_message(message.chat.id, "Please provide ur request")
-        return
+@Client.on_message(filters.command("ask"))
+async def ask_question(client, message):
+    if len(OPENAI_API) == 0:
+        return await message.reply("OPENAI_API is empty")
 
     try:
         text = message.text.split(" ", 1)[1]
