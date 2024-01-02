@@ -3,7 +3,7 @@ from pyrogram import Client, filters, enums
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 import openai 
 
-ai_client = OpenAI(api_key=OPENAI_API)
+ai_client = openai(api_key=OPENAI_API)
 
 @Client.on_message(filters.command("openai"))
 async def ask_question(client, message):
