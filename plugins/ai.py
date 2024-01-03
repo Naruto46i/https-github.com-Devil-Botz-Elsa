@@ -1,13 +1,15 @@
-from info import SUPPORT_CHAT_ID, SUPPORT_LINK, OPENAI_API
+from info import SUPPORT_GROUP, SUPPORT_LINK, OPENAI_API
 from pyrogram import Client, filters, enums
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-import openai
+from openai import OpenAI
 
-openai.api_key = OPENAI_API
+ai_client = OpenAI(api_key=OPENAI_API)
 
 @Client.on_message(filters.command("openai"))
 async def ask_question(client, message):
-    if message.chat.id != SUPPORT_CHAT_ID:
+    if len(OPENAI_API) == 0:
+        return await message.reply("OPENAI_API is empty")
+    if message.chat.id != SUPPORT_GROUP:
         btn = [[
             InlineKeyboardButton('Support Group', url=SUPPORT_LINK)
         ]]
@@ -15,16 +17,14 @@ async def ask_question(client, message):
     try:
         text = message.text.split(" ", 1)[1]
     except:
-        return await message.reply_text("Give an input!")
+        return await message.reply_text("Command Incomplete!\nUsage: /openai your_question")
     msg = await message.reply("Searching...")
     try:
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
+        response = ai_client.chat.completions.create(
             messages=[
                 {"role": "user", "content": text}
             ],
-            max_tokens=1200,
-            temperature=0.6
+            model="gpt-3.5-turbo"
         )
         await msg.edit(f"User: {message.from_user.mention}\nQuery: <code>{text}</code>\n\nResults:\n\n<code>{response.choices[0].message.content}</code>")
     except Exception as e:
