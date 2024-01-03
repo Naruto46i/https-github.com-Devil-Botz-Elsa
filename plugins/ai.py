@@ -19,7 +19,7 @@ async def ask_question(client, message):
     msg = await message.reply("Searching...")
     try:
         response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo
+            model="gpt-3.5-turbo,
             messages=[
                 {"role": "user", "content": text}
             ],
