@@ -18,12 +18,13 @@ async def ask_question(client, message):
         return await message.reply_text("Give an input!")
     msg = await message.reply("Searching...")
     try:
-        response = openai.Completion.create(
+        response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=[
                 {"role": "user", "content": text}
             ],
             max_tokens=1200
+            temperature=0.6
         )
         await msg.edit(f"User: {message.from_user.mention}\nQuery: <code>{text}</code>\n\nResults:\n\n<code>{response.choices[0].message.content}</code>")
     except Exception as e:
