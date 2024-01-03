@@ -1,15 +1,12 @@
 from info import SUPPORT_CHAT_ID, SUPPORT_LINK, OPENAI_API
 from pyrogram import Client, filters, enums
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-import openai 
+import openai
 
-
-ai_client=(api_key=OPENAI_API)
+openai.api_key = OPENAI_API
 
 @Client.on_message(filters.command("openai"))
 async def ask_question(client, message):
-    if len(OPENAI_API) == 0:
-        return await message.reply("OPENAI_API is empty")
     if message.chat.id != SUPPORT_CHAT_ID:
         btn = [[
             InlineKeyboardButton('Support Group', url=SUPPORT_LINK)
@@ -18,10 +15,10 @@ async def ask_question(client, message):
     try:
         text = message.text.split(" ", 1)[1]
     except:
-        return await message.reply_text("Command Incomplete!\nUsage: /openai your_question")
+        return await message.reply_text("Give an input!")
     msg = await message.reply("Searching...")
     try:
-        response = ai_client.chat.completions.create(
+        response = openai.chat.completions.create(
             messages=[
                 {"role": "user", "content": text}
             ],
