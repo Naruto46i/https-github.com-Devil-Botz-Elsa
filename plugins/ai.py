@@ -19,10 +19,10 @@ async def ask_question(client, message):
     msg = await message.reply("Searching...")
     try:
         response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo
             messages=[
                 {"role": "user", "content": text}
             ],
-            model="gpt-3.5-turbo"
             max_tokens=1200
         )
         await msg.edit(f"User: {message.from_user.mention}\nQuery: <code>{text}</code>\n\nResults:\n\n<code>{response.choices[0].message.content}</code>")
