@@ -23,7 +23,7 @@ async def ask_question(client, message):
             messages=[
                 {"role": "user", "content": text}
             ],
-            max_tokens=1200
+            max_tokens=1200,
             temperature=0.6
         )
         await msg.edit(f"User: {message.from_user.mention}\nQuery: <code>{text}</code>\n\nResults:\n\n<code>{response.choices[0].message.content}</code>")
