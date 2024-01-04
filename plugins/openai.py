@@ -1,4 +1,4 @@
-from info SUPPORT_CHAT_ID, SUPPORT_LINK, OPENAI_API
+from info import SUPPORT_CHAT_ID, SUPPORT_LINK, OPENAI_API
 from pyrogram import Client, filters, enums
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from openai import OpenAI
