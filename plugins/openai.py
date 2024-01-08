@@ -1,4 +1,5 @@
-
+import asyncio
+from pyrogram import Client, filters
 import openai
 from info import OPENAI_API
 
