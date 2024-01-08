@@ -5,14 +5,14 @@ from info import OPENAI_API
 
 openai.api_key = OPENAI_API
 
-@Client.on_message(filters.command("openai"))
-async def openai_chat(client, message):
-    # Ensure the user has provided a message after the command
-    if len(message.content) < 8:  # "openai" is 7 characters long
-        await message.channel.send("Please provide a message to send to the OpenAI API.")
+@Client.on_message(filters.command('openai'))
+async def openai_command(client, message):
+    if not message.text:
+        await client.send_message(message.chat.id, "Please provide ur request")
+        await client.send_message(message.chat.id, "ᴘʟᴇᴀsᴇ ᴘʀᴏᴠɪᴅᴇ ᴜʀ ʀᴇǫᴜᴇsᴛ ")
         return
 
-    # Extract the user's message
+    try:
     user_message = message.content[8:]  # Remove the "openai" prefix
 
     # Generate response with OpenAI API
@@ -27,4 +27,4 @@ async def openai_chat(client, message):
     )
 
     # Send the OpenAI response to the user
-    await message.channel.send(response["choices"][0]["text"])
+    await message.reply_text(response["choices"][0]["text"])
