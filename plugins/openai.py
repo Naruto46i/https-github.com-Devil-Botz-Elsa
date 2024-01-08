@@ -22,4 +22,3 @@ async def openai_command(client, message):
             temperature=0.6            
         )
         await message.reply_text(response["choices"][0]["text"])
-    
