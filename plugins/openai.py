@@ -6,7 +6,7 @@ from info import OPENAI_API
 openai.api_key = OPENAI_API
 
 @Client.on_message(filters.command("openai"))
-async def ask_question(client, message):
+async def message.content(client, message):
     # Ensure the user has provided a message after the command
     if len(message.content) < 8:  # "openai" is 7 characters long
         await message.channel.send("Please provide a message to send to the OpenAI API.")
