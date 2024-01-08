@@ -18,10 +18,8 @@ async def openai_command(client, message):
              messages=[
               {"role": "system", "content": "You are a helpful assistant."},
               {"role": "user", "content": user_message}
-        ],
-        max_tokens=1200,  # Increase the value of max_tokens to allow for longer responses
-        temperature=0.6
-    )
-
-    # Send the OpenAI response to the user
-    await message.reply_text(response["choices"][0]["text"])
+            ],
+            max_tokens=1200,  # Increase the value of max_tokens to allow for longer responses
+            temperature=0.6
+          )
+          await message.reply_text(response["choices"][0]["text"])
