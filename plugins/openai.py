@@ -14,12 +14,14 @@ async def openai_command(client, message):
     try:
         user_message = message.content[8:]  # Remove the "openai" prefix    
         response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
-             messages=[
-              {"role": "system", "content": "You are a helpful assistant."},
-              {"role": "user", "content": user_message}
+            messages=[
+                {"role": "user", "content": user_message}
             ],
+            model="gpt-3.5-turbo",
             max_tokens=1200,  # Increase the value of max_tokens to allow for longer responses
-            temperature=0.6
-          )
-          await message.reply_text(response["choices"][0]["text"])
+            temperature=0.6            
+        )
+        await message.reply_text(response["choices"][0]["text"])
+    except Exception as e:
+        await msg.edit(f'Error - <code>{e}</code>'user_message}
+      
