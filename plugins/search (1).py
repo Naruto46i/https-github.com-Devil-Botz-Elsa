@@ -1,5 +1,5 @@
 from pyrogram import Client, filters
-from info import OPENAI_API, LOG_CHANNEL
+from info import OPENAI_API, LOG_CHANNEL, AI
 import openai
 import asyncio
 
