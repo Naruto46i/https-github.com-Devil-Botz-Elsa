@@ -85,6 +85,8 @@ DOWNLOAD_LOCATION = environ.get("DOWNLOAD_LOCATION", "./DOWNLOADS/AudioBoT/")
 
 # FSUB
 auth_channel = environ.get('AUTH_CHANNEL')
+SUPPORT_GROUP = environ.get('SUPPORT_GROUP', '')
+SUPPORT_LINK = environ.get('SUPPORT_LINK', 'https://t.me/FEzlk1qJ6dwwYTI1')
 AUTH_CHANNEL = int(auth_channel) if auth_channel and id_pattern.search(auth_channel) else None
 # Set to False inside the bracket if you don't want to use Request Channel else set it to Channel ID
 REQ_CHANNEL = environ.get("REQ_CHANNEL", True)
