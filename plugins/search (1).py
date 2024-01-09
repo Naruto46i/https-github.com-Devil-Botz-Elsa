@@ -37,6 +37,6 @@ async def ask_question(client, message):
                 
             except Exception as error:
                 print(error)
-                await message.reply_text(f"**An error occurred:**\n\n**{error}**\n\n**Forward This Message To @KingVJ01**")
+                await message.reply_text(f"**An error occurred:**\n\n**{error}**\n\n")
     else:
         return
