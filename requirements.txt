@@ -36,4 +36,4 @@ aiohttp
 python-math
 Pillow
 speedtest-cli
-openai==1106
+openai>=1106
